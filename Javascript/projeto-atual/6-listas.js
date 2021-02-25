@@ -11,15 +11,15 @@ console.log("Destinos possíveis");
 
 // -----------------------------
 
-const lisaDestinos = new Array(
+const listaDestinos = new Array(
     `Salvador`,
     `São Paulo`,
     `Rio De Janeiro`    
 );
 
-lisaDestinos.push(`Curitiba`);
-console.log(lisaDestinos);
+listaDestinos.push(`Curitiba`);
+console.log(listaDestinos);
 
-lisaDestinos.splice(1,1) //Começa a contar do zero.
-console.log(lisaDestinos);
-console.log(lisaDestinos[1]);
+listaDestinos.splice(1,1) //Começa a contar do zero.
+console.log(listaDestinos);
+console.log(listaDestinos[1]);
