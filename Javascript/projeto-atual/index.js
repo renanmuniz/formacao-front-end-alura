@@ -1,31 +1,5 @@
-class Cliente {
-    nome;
-    cpf;
-}
-
-class ContaCorrente {
-    agencia;
-    _saldo = 0; // Não existe campo privado no js ainda, então por "convenção" dos devs,
-                //denomina-se o "_" (underline) como sinal de que o campo é privado e que você não deveria acessar ele diretamente.
-
-    sacar(valor) {
-        if(valor > this._saldo) {
-            console.log("Saldo insuficiente para saque.");
-            return;
-        }
-        this._saldo -= valor;
-        return valor;
-    }
-
-    depositar(valor) {
-        if(valor <= 0) {
-            console.log("Valor inválido.");
-            return;
-        }        
-        this._saldo += valor;       
-        return valor;
-    }
-}
+import {Cliente} from "./Cliente.js"
+import {ContaCorrente} from "./ContaCorrente.js"
 
 const cliente1 = new Cliente();
 cliente1.nome = "Ricardo";
@@ -40,14 +14,18 @@ console.log(cliente2);
 
 const contaCorrenteRicardo = new ContaCorrente();
 contaCorrenteRicardo.agencia = 1001;
+contaCorrenteRicardo.cliente = cliente1;
+contaCorrenteRicardo.depositar(500);
 
-contaCorrenteRicardo.depositar(200);
-contaCorrenteRicardo.depositar(-1);
 
-const valorSacado = contaCorrenteRicardo.sacar(150);
-console.log("Saque realizado de R$" + valorSacado);
+const contaCorrenteAlice = new ContaCorrente();
+contaCorrenteAlice.agencia = 1001;
+contaCorrenteAlice.cliente = cliente2;
+
+contaCorrenteRicardo.transferir(200, contaCorrenteAlice);
 
 console.log(contaCorrenteRicardo);
+console.log(contaCorrenteAlice);
 
 
 
